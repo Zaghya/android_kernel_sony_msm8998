@@ -18,6 +18,8 @@
  *                                                                   USA
  */
 
+#define YYLTYPE_IS_TRIVIAL 1
+
 %option noyywrap nounput noinput never-interactive
 
 %x BYTESTRING
