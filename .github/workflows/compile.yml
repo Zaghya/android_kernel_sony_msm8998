@@ -28,8 +28,8 @@ jobs:
       env:
         CROSS_COMPILE: ${{ env.CROSS_COMPILE }}
       run: |
-        make O=out ARCH=arm64 CROSS_COMPILE=${CROSS_COMPILE} lineage-msm8998-yoshino-poplar_defconfig
-        make O=out ARCH=arm64 CROSS_COMPILE=${CROSS_COMPILE} -j$(nproc --all)
+        make O=out ARCH=arm64 SUBARCH=arm64 CROSS_COMPILE=${CROSS_COMPILE} lineage-msm8998-yoshino-poplar_defconfig
+        make O=out ARCH=arm64 SUBARCH=arm64 CROSS_COMPILE=${CROSS_COMPILE} -j$(nproc --all)
 
     - name: List output directory
       run: ls -R out
@@ -144,4 +144,4 @@ jobs:
 
     - name: Upload kernel artifacts to Telegram
       run: |
-        ./kirimtele.sh file "out/arch/arm64/boot/Image.gz-dtb" "Kernel Image with DTB"
+        ./kirimtele.sh file "out/arch/arm64/boot/Image.gz-dtb" "enable overlay fs"
